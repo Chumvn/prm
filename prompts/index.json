@@ -1,8 +1,32 @@
 [
-  {"slug":"vietnamese-folk-tet-art","file":"prompts/VIETNAMESE FOLK TET ART.md","title":"{{art_type|Loại tác phẩm:Vietnamese folk painting}}"},
-  {"slug":"example","file":"prompts/example.md","title":"Minimal WebApp Generator"},
-  {"slug":"faceswap-art-style","file":"prompts/faceswap-art-style.md","title":"Faceswap AI Art Style"},
-  {"slug":"faceswap-batch","file":"prompts/faceswap-batch.md","title":"Faceswap Batch Processing"},
-  {"slug":"faceswap-realistic","file":"prompts/faceswap-realistic.md","title":"Faceswap Photo Realistic"},
-  {"slug":"faceswap-video","file":"prompts/faceswap-video.md","title":"Faceswap Video Frame"}
+  {
+    "slug": "vietnamese-folk-tet-art",
+    "file": "prompts/VIETNAMESE FOLK TET ART.md",
+    "title": "{{art_type|Loại tác phẩm:Vietnamese folk painting}}\r"
+  },
+  {
+    "slug": "example",
+    "file": "prompts/example.md",
+    "title": "Minimal WebApp Generator\r"
+  },
+  {
+    "slug": "faceswap-art-style",
+    "file": "prompts/faceswap-art-style.md",
+    "title": "Faceswap AI Art Style\r"
+  },
+  {
+    "slug": "faceswap-batch",
+    "file": "prompts/faceswap-batch.md",
+    "title": "Faceswap Batch Processing\r"
+  },
+  {
+    "slug": "faceswap-realistic",
+    "file": "prompts/faceswap-realistic.md",
+    "title": "Faceswap Photo Realistic\r"
+  },
+  {
+    "slug": "faceswap-video",
+    "file": "prompts/faceswap-video.md",
+    "title": "Faceswap Video Frame\r"
+  }
 ]
