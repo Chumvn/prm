@@ -47,3 +47,6 @@
 {{volumetric_light|Ánh sáng thể tích:Volumetric lighting}}
 {{resolution|Độ phân giải:8K resolution}}
 {{art_theme|Chủ đề tổng:Epic Vietnamese cultural artwork}}
+
+
+
