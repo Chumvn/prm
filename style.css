@@ -133,6 +133,30 @@
     font-weight: 600;
 }
 
+/* ---------- Convert Instruction Card ---------- */
+.convert-instruction-card {
+    border: 1px dashed var(--accent);
+    background: rgba(124, 92, 252, 0.06);
+}
+
+.convert-instruction-box {
+    background: var(--preview-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow-in);
+}
+
+.convert-instruction-box code {
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--accent-hover);
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
 /* ---------- Reset & Base ---------- */
 *,
 *::before,

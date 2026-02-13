@@ -391,6 +391,28 @@
         convertPreview.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
+    // ===== Convert Copy Output (re-copy) =====
+    const btnConvertCopyOutput = $('#btnConvertCopyOutput');
+    btnConvertCopyOutput.addEventListener('click', async () => {
+        const text = convertOutput.textContent;
+        if (!text) return;
+
+        try {
+            await navigator.clipboard.writeText(text);
+            showToast('Đã sao chép!');
+        } catch {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('Đã sao chép!');
+        }
+    });
+
     // ===== Init =====
     loadTemplateIndex();
 
