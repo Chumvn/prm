@@ -20,8 +20,9 @@ jobs:
           cd prompts
           echo "[" > index.json.tmp
           FIRST=true
-          for f in $(ls *.md 2>/dev/null | sort); do
-            SLUG=$(echo "$f" | sed 's/\.md$//')
+          find . -maxdepth 1 -name '*.md' -print0 | sort -z | while IFS= read -r -d '' filepath; do
+            f=$(basename "$filepath")
+            SLUG=$(echo "$f" | sed 's/\.md$//' | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
             TITLE=$(head -1 "$f" | sed 's/^#\s*//')
             if [ "$FIRST" = true ]; then
               FIRST=false
@@ -33,6 +34,7 @@ jobs:
           echo "" >> index.json.tmp
           echo "]" >> index.json.tmp
           mv index.json.tmp index.json
+          cat index.json
 
       - name: Commit index.json
         run: |
