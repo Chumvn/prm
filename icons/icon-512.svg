@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16162b"/>
+    </linearGradient>
+    <linearGradient id="bolt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b7fff"/>
+      <stop offset="100%" style="stop-color:#7c5cfc"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <g transform="translate(256,240)" filter="url(#glow)">
+    <polygon points="-22,-140 48,-20 5,-20 22,140 -48,20 -5,20" fill="url(#bolt)"/>
+  </g>
+  <text x="256" y="430" text-anchor="middle" fill="#8888a8" font-family="Inter,sans-serif" font-size="40" font-weight="700">CHUM</text>
+</svg>

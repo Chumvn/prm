@@ -1,0 +1,27 @@
+[
+    {
+        "slug": "example",
+        "file": "prompts/example.md",
+        "title": "Minimal WebApp Generator"
+    },
+    {
+        "slug": "faceswap-realistic",
+        "file": "prompts/faceswap-realistic.md",
+        "title": "Faceswap Photo Realistic"
+    },
+    {
+        "slug": "faceswap-video",
+        "file": "prompts/faceswap-video.md",
+        "title": "Faceswap Video Frame"
+    },
+    {
+        "slug": "faceswap-art-style",
+        "file": "prompts/faceswap-art-style.md",
+        "title": "Faceswap AI Art Style"
+    },
+    {
+        "slug": "faceswap-batch",
+        "file": "prompts/faceswap-batch.md",
+        "title": "Faceswap Batch Processing"
+    }
+]

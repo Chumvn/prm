@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHUM Prompt v2.0</title>
+    <meta name="description" content="Markdown Prompt Template Engine – Semantic-aware, bilingual, PWA-ready.">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="./icons/icon-192.svg">
+    <link rel="icon" type="image/svg+xml" href="./icons/icon-192.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-row">
+                <h1 class="app-title">
+                    <span class="logo-glow">⚡</span> CHUM Prompt
+                    <span class="version-badge">v2.0</span>
+                </h1>
+                <button id="themeToggle" class="btn-icon" aria-label="Đổi giao diện">
+                    <span id="themeIcon" class="theme-icon">🌙</span>
+                </button>
+            </div>
+            <p class="app-subtitle">Markdown Prompt Template Engine</p>
+        </header>
+
+        <!-- Tab Bar -->
+        <nav class="tab-bar">
+            <button class="tab-btn active" data-tab="template">
+                <span>📂</span> Template
+            </button>
+            <button class="tab-btn" data-tab="convert">
+                <span>🔄</span> Chuyển đổi
+            </button>
+        </nav>
+
+        <!-- ===== TAB: Template ===== -->
+        <div id="tabTemplate" class="tab-content active">
+            <!-- Template Selector -->
+            <section class="card" id="templateSection">
+                <label class="field-label">📂 Chọn template</label>
+                <div class="select-wrapper">
+                    <select id="templateSelect" class="input select">
+                        <option value="">— Đang tải danh sách —</option>
+                    </select>
+                </div>
+                <p class="field-hint" id="templateHint">Chọn template từ thư viện hoặc tải trực tiếp từ GitHub.</p>
+            </section>
+
+            <!-- Variables Form (Dynamic) -->
+            <section class="card" id="variablesSection" style="display:none;">
+                <label class="field-label">🔧 Biến số</label>
+                <p class="field-hint">Nhấn nút gợi ý (tiếng Việt) để điền giá trị tiếng Anh, hoặc tự nhập.</p>
+                <div id="variablesContainer"></div>
+            </section>
+
+            <!-- Actions -->
+            <div class="actions">
+                <button id="btnGenerate" class="btn btn-primary" disabled>
+                    <span>⚡</span> Tạo Prompt
+                </button>
+                <div class="actions-row">
+                    <button id="btnCopy" class="btn btn-secondary" disabled>
+                        <span>📋</span> Sao chép
+                    </button>
+                    <button id="btnReset" class="btn btn-ghost">
+                        <span>🔄</span> Đặt lại
+                    </button>
+                </div>
+            </div>
+
+            <!-- Live Preview -->
+            <section id="previewSection" class="card preview-card" style="display:none;">
+                <div class="preview-header">
+                    <label class="field-label">📄 Xem trước</label>
+                    <span id="charCount" class="char-count"></span>
+                </div>
+                <pre id="previewOutput" class="preview-output"></pre>
+            </section>
+        </div>
+
+        <!-- ===== TAB: Convert ===== -->
+        <div id="tabConvert" class="tab-content">
+            <section class="card">
+                <label class="field-label">📝 Prompt cần chuyển đổi</label>
+                <p class="field-hint">Dán prompt gốc vào đây. Nhấn nút bên dưới để copy ghép với câu lệnh chuyển đổi
+                    sang dạng <code>{{variable|Label:value}}</code>.</p>
+                <textarea id="convertInput" class="input textarea" rows="10"
+                    placeholder="Dán prompt của bạn vào đây…"></textarea>
+            </section>
+
+            <div class="actions">
+                <button id="btnConvertCopy" class="btn btn-primary">
+                    <span>📋</span> Copy ghép Prompt
+                </button>
+            </div>
+
+            <!-- Convert Preview -->
+            <section id="convertPreview" class="card preview-card" style="display:none;">
+                <div class="preview-header">
+                    <label class="field-label">📄 Xem trước kết quả ghép</label>
+                    <span id="convertCharCount" class="char-count"></span>
+                </div>
+                <pre id="convertOutput" class="preview-output"></pre>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>CHUM Prompt v2.0 &mdash; Template Engine &middot; PWA &middot; Git-powered</p>
+        </footer>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">Đã sao chép!</div>
+
+    <script src="./app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js').catch(() => { });
+        }
+    </script>
+</body>
+
+</html>
