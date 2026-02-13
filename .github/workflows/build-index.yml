@@ -1,0 +1,43 @@
+name: Build Prompt Index
+
+on:
+  push:
+    paths:
+      - 'prompts/*.md'
+
+permissions:
+  contents: write
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate index.json
+        run: |
+          cd prompts
+          echo "[" > index.json.tmp
+          FIRST=true
+          for f in $(ls *.md 2>/dev/null | sort); do
+            SLUG=$(echo "$f" | sed 's/\.md$//')
+            TITLE=$(head -1 "$f" | sed 's/^#\s*//')
+            if [ "$FIRST" = true ]; then
+              FIRST=false
+            else
+              echo "," >> index.json.tmp
+            fi
+            printf '  {"slug":"%s","file":"prompts/%s","title":"%s"}' "$SLUG" "$f" "$TITLE" >> index.json.tmp
+          done
+          echo "" >> index.json.tmp
+          echo "]" >> index.json.tmp
+          mv index.json.tmp index.json
+
+      - name: Commit index.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add prompts/index.json
+          git diff --cached --quiet || git commit -m "chore: auto-update prompts/index.json"
+          git push
